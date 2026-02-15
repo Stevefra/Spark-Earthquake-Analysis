@@ -1,17 +1,5 @@
-import org.apache.spark.sql.SparkSession
+name := "SparkEarthquakeAnalysis"
+version := "0.1"
+scalaVersion := "2.12.15"
 
-object EarthquakeAnalysis {
-    def main(args: Array[String]): Unit = {
-        // Initialisation
-        val spark = SparkSession.builder()
-          .appName("Earthquake Analysis")
-          .master("local[*]")
-          .getOrCreate()
-
-        // Lecture (vérifie bien la majuscule à "Data")
-        val df = spark.read
-          .option("header", "true")
-          .option("inferSchema", "true")
-          .csv("Data/dataset-earthquakes-trimmed.csv")
-
-        //
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.2.1"
